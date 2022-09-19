@@ -1,15 +1,29 @@
 import React from "react";
-import { Image, View, Text, StyleSheet } from "react-native";
+import {
+  Image,
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import SkiiImage from "../assets/skii128.png";
 
 export default function CategoryListItem(props) {
   console.log(props);
   const { category } = props;
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{category.name}</Text>
-      <Image style={styles.categogyImage} source={SkiiImage} />
-    </View>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      onPress={() => {
+        Alert.alert("Click!");
+      }}
+    >
+      <View style={styles.container}>
+        <Text style={styles.title}>{category.name}</Text>
+        <Image style={styles.categogyImage} source={SkiiImage} />
+      </View>
+    </TouchableOpacity>
   );
 }
 
