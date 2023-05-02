@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { ScrollView, Text, View } from 'react-native';
+import Form from './components/form';
+import Task from './components/task';
+import { styles } from './style';
 
-export default function App() {
+function App() {
+  const [taskList, setTaskList] = useState([]);
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <View style={styles.body}>
+        <Text style={styles.header}>Todo List</Text>
+        <ScrollView style={styles.items}>
+          <Task taskList={taskList} />
+        </ScrollView>
+      </View>
+      <Form taskList={taskList} setTaskList={setTaskList} />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
