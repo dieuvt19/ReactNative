@@ -2,27 +2,22 @@ import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { styles } from './style';
 
-export default function Task({ taskList }) {
-  console.log(taskList);
+export default function Task({ title, number, onDeleteTask }) {
+  const itemBg = number % 2 === 0 ? styles.even : styles.odd;
+
   return (
-    <View>
-      {taskList?.map((task, index) => {
-        console.log(task);
-        return (
-          <TouchableOpacity key={index}>
-            <View style={styles.item}>
-              <View style={styles.square}>
-                <Text style={styles.number}>
-                  {index < 10 ? `0${index + 1}` : `${index + 1}`}
-                </Text>
-              </View>
-              <View style={styles.content}>
-                <Text>{task}</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-        );
-      })}
-    </View>
+    <TouchableOpacity onPress={onDeleteTask}>
+      <View style={styles.item}>
+        <View style={[styles.square, itemBg]}>
+          <Text style={styles.number}>
+            {number < 10 ? `0${number}` : `${number}`}
+          </Text>
+        </View>
+        <View style={styles.content}>
+          <Text>{title}</Text>
+        </View>
+      </View>
+      {/* <Text onPress={handleDelete(index)}>xoa</Text> */}
+    </TouchableOpacity>
   );
 }

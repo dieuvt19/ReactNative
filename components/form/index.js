@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import {
+  Keyboard,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { styles } from './style';
 
-export default function Form({ taskList, setTaskList }) {
+export default function Form({ handleAddTask }) {
   const [text, setText] = useState('');
 
   const onPress = () => {
@@ -10,8 +16,9 @@ export default function Form({ taskList, setTaskList }) {
       alert('Vui long nhap cong viec');
       return false;
     }
-    setTaskList([...taskList, text]);
+    handleAddTask(text);
     setText('');
+    Keyboard.dismiss();
   };
   return (
     <View style={styles.addTask}>

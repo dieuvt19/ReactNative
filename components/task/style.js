@@ -15,10 +15,16 @@ export const styles = StyleSheet.create({
   square: {
     width: 48,
     height: 36,
-    backgroundColor: color.second,
+
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  odd: {
+    backgroundColor: color.second,
+  },
+  even: {
+    backgroundColor: color.green,
   },
   number: {
     fontSize: 16,
